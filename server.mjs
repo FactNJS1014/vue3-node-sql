@@ -7,7 +7,7 @@ import sql from 'mssql';
 const dbConfig = {
   user: 'sa',  
   server: '172.22.64.11',
-  database: 'PCB_NG_DATA',
+  database: 'ESD',
   options: {
     encrypt: false,
     trustServerCertificate: true,
@@ -21,8 +21,8 @@ app.use(express.json());
 // ทดสอบ route ที่เชื่อม MSSQL
 app.get('/api/data', async (req, res) => {
   try {
-    const pool = await sql.connect(dbConfig);
-    const result = await pool.request().query('SELECT * FROM PCB_LOGIN'); // เปลี่ยนชื่อ table
+    const db = await sql.connect(dbConfig);
+    const result = await db.request().query('EXEC PSCLEAN_LIST_OVERDAY @DAYS = 0'); // เปลี่ยนชื่อ table
     res.json(result.recordset);
   } catch (err) {
     console.error('DB Error:', err);
