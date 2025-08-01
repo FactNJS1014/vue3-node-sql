@@ -5,7 +5,7 @@
 
     <div class="grid grid-cols-4 gap-4">
       <div v-for="(usersInSection, sec) in map_sec" :key="sec" class="mb-6">
-        <div class="card w-96 bg-base-100 card-xs shadow-sm">
+        <div class="card w-90 bg-base-100 card-xs shadow-sm">
           <div class="card-body">
             <div class="flex items-center justify-between mb-4">             
               <h2 class="text-lg font-semibold text-center">{{ sec }}</h2>
